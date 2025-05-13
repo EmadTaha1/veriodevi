@@ -1,0 +1,19 @@
+@model VeriStore.Models.Urun
+@{
+    ViewData["Title"] = Model.UrunAdi;
+}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title">@Model.UrunAdi</h3>
+                    <h5 class="text-success">@Model.Fiyat?.ToString("C")</h5>
+                    <span class="badge bg-secondary">@Model.Kategori</span>
+                    <p class="card-text mt-3">@Model.Aciklama</p>
+                    <a href="@Url.Action("Index", "Home")" class="btn btn-secondary mt-3">Ürünlere Dön</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

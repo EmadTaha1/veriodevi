@@ -1,0 +1,35 @@
+﻿@model List<VeriStore.Models.Urun>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="hero-section text-center mb-5">
+    <h1 class="display-5 fw-bold">Welcome to Emad's DXN Store</h1>
+    <p class="lead">Shop the best DXN products with fast delivery and great prices!</p>
+    <a href="#urunler" class="btn btn-primary btn-lg mt-3">Shop Now</a>
+</div>
+<h2 id="urunler" class="text-center mb-4">DXN Ürünleri</h2>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var urun in Model)
+    {
+        <div class="col">
+            <div class="card h-100">
+                <!-- No image column in Urun, so skip image -->
+                <div class="card-body">
+                    <h5 class="card-title">@urun.UrunAdi</h5>
+                    <p class="card-text text-truncate">@urun.Aciklama</p>
+                    <span class="badge bg-secondary">@urun.Kategori</span>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                    <span class="fw-bold">@urun.Fiyat?.ToString("C")</span>
+                    <div>
+                        <a href="@Url.Action("Details", "Urun", new { id = urun.UrunId })" class="btn btn-outline-primary btn-sm me-2">Detaylar</a>
+                        <form action="@Url.Action("AddToCart", "Cart", new { urunId = urun.UrunId })" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-success btn-sm">Sepete Ekle</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<a href="@Url.Action("Index", "Cart")" class="btn btn-warning mt-4">Sepeti Görüntüle</a>

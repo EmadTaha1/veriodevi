@@ -1,0 +1,52 @@
+@model List<VeriStore.Models.CartItem>
+@{
+    ViewData["Title"] = "Alışveriş Sepeti";
+
+}
+<h2 class="mb-4">Alışveriş Sepeti</h2>
+@if (!Model.Any())
+{
+    <div class="alert alert-info">Sepetiniz boş.</div>
+    <a href="@Url.Action("Index", "Home")" class="btn btn-primary mt-3">Alışverişe Devam Et</a>
+}
+else
+{
+    <table class="table table-bordered table-striped">
+        <thead class="table-light">
+            <tr>
+                <th>Ürün</th>
+                <th>Fiyat</th>
+                <th>Adet</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.UrunAdi</td>
+                <td>@item.Fiyat.ToString("C")</td>
+                <td>@item.Quantity</td>
+                <td>
+                    <form asp-action="RemoveFromCart" asp-controller="Cart" asp-route-cartItemId="@item.CartItemId" method="post">
+                        <button type="submit" class="btn btn-danger btn-sm">Kaldır</button>
+                    </form>
+                </td>
+            </tr>
+        }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2" class="text-end fw-bold">Toplam:</td>
+                <td colspan="2" class="fw-bold">@(Model?.Sum(x => x.ToplamTutar) ?? 0)</td>
+            </tr>
+        </tfoot>
+    </table>
+    <a href="@Url.Action("Index", "Home")" class="btn btn-primary">Alışverişe Devam Et</a>
+    @if (Model.Any())
+    {
+        <form asp-action="BuyNow" asp-controller="Cart" method="post">
+            <button type="submit" class="btn btn-success mt-3">Şimdi Satın Al</button>
+        </form>
+    }
+}

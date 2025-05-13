@@ -1,0 +1,7 @@
+@{
+    ViewData["Title"] = "Sipariş Başarılı";
+}
+<div class="alert alert-success mt-5 text-center">
+    <h3>@ViewBag.Message</h3>
+</div>
+<a href="@Url.Action("Index", "Home")" class="btn btn-primary d-block mx-auto mt-4" style="max-width:200px;">Ana Sayfa</a>

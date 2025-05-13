@@ -1,0 +1,28 @@
+@model VeriStore.Models.UserViewModel
+@{
+    ViewData["Title"] = "تسجيل مستخدم جديد";
+}
+<h2 class="mb-4">تسجيل مستخدم جديد</h2>
+<form asp-action="Register" method="post" class="w-50 mx-auto">
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Email" class="form-label"></label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Password" class="form-label"></label>
+        <input asp-for="Password" type="password" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Role" class="form-label">نوع الحساب</label>
+        <select asp-for="Role" class="form-control">
+            <option value="Customer">مشتري</option>
+            <option value="Admin">مستخدم عادي</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-success">تسجيل</button>
+    <a href="@Url.Action("Login", "Auth")" class="btn btn-link">لديك حساب؟ دخول</a>
+</form>

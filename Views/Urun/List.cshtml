@@ -1,0 +1,44 @@
+@model List<VeriStore.Models.Urun>
+@{
+    ViewData["Title"] = "Ürünler";
+    var searchQuery = ViewData["SearchQuery"] as string;
+}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <form class="d-flex" asp-controller="Urun" asp-action="Search" method="get">
+        <input class="form-control me-2" type="search" name="q" value="@searchQuery" placeholder="Ürün ara..." aria-label="Search">
+        <button class="btn btn-outline-primary" type="submit">Ara</button>
+    </form>
+    <form method="get" class="ms-3">
+        <select class="form-select" onchange="location = this.value;" style="min-width:180px;">
+            <option value="@Url.Action("List", "Urun")">Tüm Kategoriler</option>
+            <option value="@Url.Action("Icecek", "Urun")">İçecekler</option>
+            <option value="@Url.Action("Sampuan", "Urun")">Şampuanlar</option>
+            <option value="@Url.Action("Sabun", "Urun")">Sabunlar</option>
+        </select>
+    </form>
+</div>
+<h2 class="text-center mb-4">@ViewData["Title"]</h2>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    @foreach (var urun in Model)
+    {
+        <div class="col">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">@urun.UrunAdi</h5>
+                    <p class="card-text text-truncate">@urun.Aciklama</p>
+                    <span class="badge bg-secondary">@urun.Kategori</span>
+                </div>
+                <div class="card-footer d-flex justify-content-between align-items-center">
+                    <span class="fw-bold">@urun.Fiyat?.ToString("C")</span>
+                    <div>
+                        <a href="@Url.Action("Details", "Urun", new { id = urun.UrunId })" class="btn btn-outline-primary btn-sm me-2">Detaylar</a>
+                        <form action="@Url.Action("AddToCart", "Cart", new { urunId = urun.UrunId })" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-success btn-sm">Sepete Ekle</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+<a href="@Url.Action("Index", "Cart")" class="btn btn-warning mt-4">Sepeti Görüntüle</a>

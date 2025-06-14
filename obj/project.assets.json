@@ -3569,11 +3569,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\My Pc\\source\\repos\\VeriStore\\VeriStore.csproj",
+      "projectUniqueName": "C:\\Users\\My Pc\\Desktop\\UNI project\\veriodevi\\VeriStore.csproj",
       "projectName": "VeriStore",
-      "projectPath": "C:\\Users\\My Pc\\source\\repos\\VeriStore\\VeriStore.csproj",
+      "projectPath": "C:\\Users\\My Pc\\Desktop\\UNI project\\veriodevi\\VeriStore.csproj",
       "packagesPath": "C:\\Users\\My Pc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\My Pc\\source\\repos\\VeriStore\\obj\\",
+      "outputPath": "C:\\Users\\My Pc\\Desktop\\UNI project\\veriodevi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

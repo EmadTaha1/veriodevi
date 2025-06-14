@@ -10,6 +10,8 @@
 </head>
 <body class="d-flex flex-column min-vh-100">
     <header>
+          @if (Context.Session.GetInt32("UserId") != null)
+                        {
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
             <div class="container-fluid">
                 <a class="navbar-brand fw-bold" href="@Url.Action("Index", "Home")">Emad's DXN Store</a>
@@ -53,6 +55,12 @@
                 </div>
             </div>
         </nav>
+          } else{
+
+          }
+                      
+                            
+                    
     </header>
     <div class="container flex-grow-1">
         <main role="main" class="pb-3">
